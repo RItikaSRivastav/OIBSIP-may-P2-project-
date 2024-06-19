@@ -1,0 +1,85 @@
+ package com.example.stopwatchapp
+
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.example.stopwatchapp.databinding.ActivityMainBinding
+import java.util.Objects
+
+ class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    private var isRunning = false
+     private var timerSeconds = 0
+
+     private val handler = Handler(Looper.getMainLooper())
+     private val runnable = object : Runnable{
+         override fun run() {
+             timerSeconds++
+             val hours = timerSeconds / 3600
+             val minutes = (timerSeconds % 3600) / 60
+             val seconds = timerSeconds % 60
+
+             val time = String.format("%02d:%02d:%02d", hours , minutes , seconds)
+             binding.timertext.text = time
+
+             handler.postDelayed(this,1000)
+         }
+     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+        setContentView(binding.root)
+
+        binding.startbtn.setOnClickListener {
+            startTimer()
+        }
+        binding.stopbtn.setOnClickListener {
+            stopTimer()
+        }
+        binding.resrtbtn.setOnClickListener {
+            resetTimer()
+        }
+
+    }
+     private fun startTimer(){
+         if (!isRunning){
+             handler.postDelayed(runnable,1000)
+             isRunning = true
+
+             binding.startbtn.isEnabled = false
+             binding.stopbtn.isEnabled = true
+             binding.resrtbtn.isEnabled = true
+
+
+         }
+     }
+     private fun stopTimer(){
+         if (isRunning){
+             handler.removeCallbacks(runnable)
+             isRunning = false
+
+             binding.startbtn.isEnabled = true
+             binding.startbtn.text = "Resume"
+             binding.stopbtn.isEnabled = false
+             binding.resrtbtn.isEnabled = true
+         }
+     }
+     private fun resetTimer(){
+         startTimer()
+
+         timerSeconds = 0
+         binding.timertext.text = "00:00:00"
+
+         binding.startbtn.isEnabled = true
+         binding.resrtbtn.isEnabled = false
+         binding.startbtn.text = "Start"
+     }
+}

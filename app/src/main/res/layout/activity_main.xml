@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/stopwatch"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/timertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="330dp"
+        android:text="00:00:00"
+        android:textAlignment="center"
+        android:textSize="38sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/startbtn"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="160dp"
+            android:backgroundTint="@color/brown"
+            android:padding="8dp"
+            android:text="Start"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/stopbtn"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/brown"
+            android:enabled="false"
+            android:padding="8dp"
+            android:text="Stop"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/resrtbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startbtn"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/brown"
+            android:enabled="false"
+            android:text="Reset"
+            android:textColor="@color/white"
+            android:textSize="25sp"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
