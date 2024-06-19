@@ -9,6 +9,7 @@ The Stopwatch App is a user-friendly, precise, and visually appealing applicatio
 . Start/Stop Button:
 
 One-tap operation to start and stop the timer.
+
 . Reset Button:
 
 Resets the stopwatch to zero with a single tap.
